@@ -1,7 +1,6 @@
 import streamlit as st
-
 import random
-
+import time
 st.set_page_config(page_title="German Word Quiz", page_icon="📚")
 st.title(" German Word Quiz")
 st.write("Learn German words in a fun way!", size=17)
@@ -20,12 +19,17 @@ st.markdown(
     body {
         background-color: #FFF3E0; /* Light peach */
     }
+   st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #FFF3E0;
+    }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-import time
 
 placeholder = st.empty()
 for i in range(5):
@@ -109,6 +113,41 @@ if 'score' not in st.session_state:
 if st.session_state.q_number < len(st.session_state.word_list):
     german, english = st.session_state.word_list[st.session_state.q_number]
     st.subheader(f"What does _{german}_ mean in Romanian?")
+
+ # Timer
+    elapsed = time.time() - st.session_state.start_time
+    remaining = 10 - int(elapsed)
+    if remaining > 0:
+        st.warning(f"⏳ You have {remaining} seconds left!")
+        answer = st.text_input("Your answer:")
+
+        if st.button("Submit"):
+            if answer.lower() == english.lower():
+                st.success("✅ Correct!")
+                st.session_state.score += 1
+            else:
+                st.error(f"❌ Nope! The correct answer was **{english}**.")
+
+            st.session_state.q_number += 1
+            st.session_state.start_time = time.time()
+            st.experimental_rerun()
+    else:
+        st.error("⏰ Time's up!")
+        st.info(f"The correct answer was **{english}**.")
+        st.session_state.q_number += 1
+        st.session_state.start_time = time.time()
+        st.experimental_rerun()
+
+else:
+    # 🎉 Game over
+    st.balloons()
+    st.success("🎊 Quiz Complete!")
+    st.write(f"Your final score: **{st.session_state.score} / {len(words)}**")
+
+    if st.button("🔄 Restart"):
+        st.session_state.clear()
+        st.experimental_rerun()
+
 
     answer = st.text_input("Your answer:")
 
