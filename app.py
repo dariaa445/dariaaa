@@ -4,7 +4,7 @@ import random
 st.set_page_config(page_title="German Word Quiz", page_icon="📚")
 st.markdown(
     """
-    <h1 style="text-align:center; font-size: 50px; font-family: 'Special Gothic Condensed One', cursive, sans-serif;
+    <h1 style="text-align:center; font-size: 50px; font-family: 'Baloo 2', cursive ;
                background: linear-gradient(to right, #F48FB1, #CE93D8, #81D4FA);
                -webkit-background-clip: text;
                color: transparent;
@@ -21,13 +21,28 @@ st.markdown("<p style='font-size:17px;'>Learn German words in a fun way!</p>", u
 # Fixed color syntax + updated to black for contrast
 st.markdown(
     """
-    <div style="text-align: right;">
+    <div style="text-align: left;">
         <h1 style="color: #ADD8E6;"> Let's Learn German Words! 📚✨</h1>
         <p style="font-size:18px; color: #d2b4de ;">Click the button to guess the meaning of a German word!</p>
     </div>
     """,
     unsafe_allow_html=True
 )
+# 🌈 Style the Submit button
+st.markdown("""
+    <style>
+    div.stButton > button:first-child {
+        background-color: #4CAF50 !important;
+        color: white;
+        font-size: 18px;
+        border-radius: 10px;
+        padding: 10px 24px;
+    }
+    div.stButton > button:first-child:hover {
+        background-color: #45a049 !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 # Word list (removed the duplicate 'brauche' key)
 words = {
@@ -100,7 +115,15 @@ if 'score' not in st.session_state:
 # Quiz logic
 if st.session_state.q_number < len(st.session_state.word_list):
     german, english = st.session_state.word_list[st.session_state.q_number]
-    st.subheader(f"What does _{german}_ mean in Romanian?")
+    st.markdown(
+    f"""
+    <h3 style="font-family: Arial; font-size: 24px;">
+        What does <span style="color: #E91E63; font-weight: bold;">{german}</span> mean in Romanian?
+    </h3>
+    """,
+    unsafe_allow_html=True
+)
+
 
     answer = st.text_input("Your answer:")
 
