@@ -2,28 +2,44 @@ import streamlit as st
 import random
 import time
 
-# Set up page
+# Page setup
 st.set_page_config(page_title="German Word Quiz", page_icon="📚")
-st.title("German Word Quiz")
-st.write("Learn German words in a fun way!")
 
-# Custom HTML and CSS for colors and layout
+# Apply custom styles
 st.markdown(
     """
     <style>
     .stApp {
-        background-color: #FFF3E0;
+        background-color: #E0F7FA; /* light blue */
+        color: black;
+    }
+    h1, h2, h3, h4, h5, h6, p {
+        color: black;
+    }
+    .stTextInput > div > div > input {
+        background-color: #F8BBD0; /* pink */
+        color: black;
+    }
+    .stButton button {
+        background-color: #F48FB1 !important;
+        color: white !important;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 0.5em 1em;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Fun header
+# App header
+st.title("📚 German Word Quiz")
+st.write("Learn German words in a fun way!")
+
 st.markdown(
     """
     <div style="text-align: center;">
-        <h1 style="color: #00695C;"> Let's Learn German Words! 📚✨</h1>
+        <h1> Let's Learn German Words! 📚✨</h1>
         <p style="font-size:18px;">Click the button to guess the meaning of a German word!</p>
     </div>
     """,
@@ -32,12 +48,12 @@ st.markdown(
 
 # Loading animation
 placeholder = st.empty()
-for i in range(5):
+for i in range(3):
     placeholder.markdown(f"🎉 Loading... {i+1}")
     time.sleep(0.3)
 placeholder.success("Done! ✅")
 
-# Words
+# Word list
 words = {
     'Arbute': 'angajati',
     'Kunden': 'client',
@@ -98,7 +114,7 @@ words = {
     'Einladung': 'invitatie'
 }
 
-# Session state
+# Setup session state
 if 'score' not in st.session_state:
     st.session_state.score = 0
     st.session_state.q_number = 0
@@ -109,7 +125,7 @@ if 'score' not in st.session_state:
 # Quiz logic
 if st.session_state.q_number < len(st.session_state.word_list):
     german, english = st.session_state.word_list[st.session_state.q_number]
-    st.subheader(f"What does _{german}_ mean in Romanian?")
+    st.subheader(f"What does *{german}* mean in Romanian?")
 
     # Timer logic
     elapsed = time.time() - st.session_state.start_time
@@ -117,28 +133,11 @@ if st.session_state.q_number < len(st.session_state.word_list):
     if remaining > 0:
         st.warning(f"⏳ You have {remaining} seconds left!")
         answer = st.text_input("Your answer:")
-
         if st.button("Submit"):
             if answer.lower() == english.lower():
                 st.success("✅ Correct!")
                 st.session_state.score += 1
             else:
-                st.error(f"❌ Nope! The correct answer was **{english}**.")
+                st.error(f"❌ Nope! It was **{english}**.")
+            st.session_state.q_number +=
 
-            st.session_state.q_number += 1
-            st.session_state.start_time = time.time()
-            st.experimental_rerun()
-    else:
-        st.error("⏰ Time's up!")
-        st.info(f"The correct answer was **{english}**.")
-        st.session_state.q_number += 1
-        st.session_state.start_time = time.time()
-        st.experimental_rerun()
-else:
-    st.balloons()
-    st.success("🎊 Quiz Complete!")
-    st.write(f"Your final score: **{st.session_state.score} / {len(words)}**")
-
-    if st.button("🔄 Restart"):
-        st.session_state.clear()
-        st.experimental_rerun()
