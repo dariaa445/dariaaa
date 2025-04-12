@@ -54,7 +54,7 @@ words = {
     'Diensleistung': 'serviciu',
     'Geschäftsbereiche': 'domenii de activitate',
     'schiftlich': 'in scris',
-    'beschreiben': 'descrie',
+    'beschreiben': 'a descrie',
     'genügt': 'de ajuns',
     'brauche': 'a avea nevoie',
     'vielleicht': 'probabil',
