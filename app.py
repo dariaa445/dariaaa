@@ -11,8 +11,8 @@ st.markdown("<p style='font-size:17px;'>Learn German words in a fun way!</p>", u
 st.markdown(
     """
     <div style="text-align: center;">
-        <h1 style="color: black;"> Let's Learn German Words! 📚✨</h1>
-        <p style="font-size:18px; color: black;">Click the button to guess the meaning of a German word!</p>
+        <h1 style="color: #ADD8E6;"> Let's Learn German Words! 📚✨</h1>
+        <p style="font-size:18px; color: #d2b4de ;">Click the button to guess the meaning of a German word!</p>
     </div>
     """,
     unsafe_allow_html=True
