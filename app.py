@@ -2,7 +2,18 @@ import streamlit as st
 import random
 
 st.set_page_config(page_title="German Word Quiz", page_icon="📚")
-st.title("German Word Quiz")
+st.markdown(
+    """
+    <h1 style="text-align:center; font-size: 50px; font-family: 'Comic Sans MS', cursive, sans-serif;
+               background: linear-gradient(to right, #F48FB1, #CE93D8, #81D4FA);
+               -webkit-background-clip: text;
+               color: transparent;
+               padding: 10px;">
+       🌸 German Word Quiz 🌸
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
 
 # Corrected the line below
 st.markdown("<p style='font-size:17px;'>Learn German words in a fun way!</p>", unsafe_allow_html=True)
