@@ -9,7 +9,7 @@ st.markdown(
                -webkit-background-clip: text;
                color: transparent;
                padding: 10px;">
-       🌸 German Word Quiz 🌸
+       🌸German Word Quiz🌸
     </h1>
     """,
     unsafe_allow_html=True
