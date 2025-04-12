@@ -4,7 +4,7 @@ import random
 st.set_page_config(page_title="German Word Quiz", page_icon="📚")
 st.markdown(
     """
-    <h1 style="text-align:center; font-size: 50px; font-family: 'Comic Sans MS', cursive, sans-serif;
+    <h1 style="text-align:center; font-size: 50px; font-family: 'Special Gothic Condensed One', cursive, sans-serif;
                background: linear-gradient(to right, #F48FB1, #CE93D8, #81D4FA);
                -webkit-background-clip: text;
                color: transparent;
@@ -21,7 +21,7 @@ st.markdown("<p style='font-size:17px;'>Learn German words in a fun way!</p>", u
 # Fixed color syntax + updated to black for contrast
 st.markdown(
     """
-    <div style="text-align: center;">
+    <div style="text-align: right;">
         <h1 style="color: #ADD8E6;"> Let's Learn German Words! 📚✨</h1>
         <p style="font-size:18px; color: #d2b4de ;">Click the button to guess the meaning of a German word!</p>
     </div>
