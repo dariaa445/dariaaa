@@ -139,5 +139,21 @@ if st.session_state.q_number < len(st.session_state.word_list):
                 st.session_state.score += 1
             else:
                 st.error(f"❌ Nope! It was **{english}**.")
-            st.session_state.q_number +=
+            st.session_state.q_number += 1
+            st.session_state.start_time = time.time()
+            st.experimental_rerun()
+    else:
+        st.error("⏰ Time's up!")
+        st.info(f"The correct answer was **{english}**.")
+        st.session_state.q_number += 1
+        st.session_state.start_time = time.time()
+        st.experimental_rerun()
 
+# Game over screen
+else:
+    st.balloons()
+    st.success("🎊 Quiz Complete!")
+    st.write(f"Your final score: **{st.session_state.score} / {len(words)}**")
+    if st.button("🔄 Restart"):
+        st.session_state.clear()
+        st.experimental_rerun()
