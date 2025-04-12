@@ -33,8 +33,6 @@ for i in range(5):
     time.sleep(0.5)
 placeholder.success("Done! ✅")
 
-st.image("https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif")
-
 
 # Word list
 words = {
@@ -100,6 +98,16 @@ words = {
     
 }
 
+start = time.time()
+
+if user_input:
+    elapsed = time.time() - start
+    if elapsed > 5:
+        st.error("⏰ Too late!")
+    elif user_input.lower() == correct_answer.lower():
+        st.success("✅ Correct!")
+    else:
+        st.warning("❌ Try again.")
 # Setup session state
 if 'score' not in st.session_state:
     st.session_state.score = 0
