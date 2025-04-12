@@ -14,6 +14,26 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #FFF3E0; /* Light peach */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+import time
+
+placeholder = st.empty()
+for i in range(5):
+    placeholder.markdown(f"🎉 Loading... {i+1}")
+    time.sleep(0.5)
+placeholder.success("Done! ✅")
+
+st.image("https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif")
 
 
 # Word list
