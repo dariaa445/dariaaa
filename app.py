@@ -21,7 +21,7 @@ st.markdown("<p style='font-size:17px;'>Learn German words in a fun way!</p>", u
 # Fixed color syntax + updated to black for contrast
 st.markdown(
     """
-    <div style="text-align: left;">
+    <div style="text-align:left;">
         <h1 style="color: #ADD8E6;"> Let's Learn German Words! 📚✨</h1>
         <p style="font-size:18px; color: #d2b4de ;">Click the button to guess the meaning of a German word!</p>
     </div>
@@ -70,7 +70,7 @@ words = {
     'Die Tätigkeit': 'activitate',
     'Geschäft': 'afacere',
     'Termine': 'intalnire',
-    'Waterbildung': 'cursuri profesionale',
+    'Weiterterbildung': 'cursuri profesionale',
     'Eine Termin fetlegen': 'to make an appointment',
     'Die Messe': 'targ',
     'besuchen': 'a vizita',
